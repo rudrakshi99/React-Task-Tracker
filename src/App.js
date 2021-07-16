@@ -20,13 +20,13 @@ const App =()=> {
 
   //fetch data
   const fetchTasks = async() => {
-    const res = await fetch('https://rudrakshi-todoapp.herokuapp.com/tasks')
+    const res = await fetch('https://rudrakshi.pythonanywhere.com/')
     const data = await res.json()
     return data
   }
 
   const fetchTask = async(id) => {
-    const res = await fetch(`https://rudrakshi-todoapp.herokuapp.com/tasks/${id}`)
+    const res = await fetch(`https://rudrakshi.pythonanywhere.com/${id}/`)
     const data = await res.json()
     return data
   }
@@ -34,7 +34,7 @@ const App =()=> {
 
   //Add Task
   const addTask = async(task) => {
-    const res = await fetch('https://rudrakshi-todoapp.herokuapp.com/tasks',{
+    const res = await fetch('https://rudrakshi.pythonanywhere.com/create/',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -51,7 +51,7 @@ const App =()=> {
 
   //Delete Task
   const deleteTask = async (id) => {
-    await fetch(`https://rudrakshi-todoapp.herokuapp.com/tasks/${id}`,{
+    await fetch(`https://rudrakshi.pythonanywhere.com/${id}/`,{
       method: 'DELETE'
     })
     setTasks(tasks.filter((task) => task.id!==id))
@@ -64,7 +64,7 @@ const App =()=> {
     const updTask = {...taskToToggle,
     reminder: !taskToToggle.reminder}
     
-    const res = await fetch('https://rudrakshi-todoapp.herokuapp.com/tasks',{
+    const res = await fetch('https://rudrakshi.pythonanywhere.com/',{
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
